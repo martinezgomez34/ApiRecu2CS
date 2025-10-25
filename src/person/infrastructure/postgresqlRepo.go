@@ -57,3 +57,9 @@ func (r *PostgresPersonRepository) GetAll() ([]*domain.Person, error) {
 	err := r.db.Find(&persons).Error
 	return persons, err
 }
+
+func (r *PostgresPersonRepository) GetByID(id uint) (*domain.Person, error) {
+    var person domain.Person
+    err := r.db.First(&person, id).Error
+    return &person, err
+}

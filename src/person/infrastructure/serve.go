@@ -22,7 +22,7 @@ func NewServer(router *gin.Engine) *Server {
 	listPersonService := application.NewListPersonService(repo)
 	statsService := application.NewStatsService(repo)
 
-	routes.SetupRoutes(router, addPersonService, listPersonService, statsService)
+	routes.SetupRoutes(router, addPersonService, listPersonService, statsService, application.NewGetPersonByIDService(repo))
 
 	return &Server{
 		router: router,
